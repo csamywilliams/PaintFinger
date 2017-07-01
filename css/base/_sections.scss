@@ -1,0 +1,10 @@
+.draw-container {
+	width: $canvas-size;
+	height: $canvas-size;
+	background-color: $white;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	cursor: crosshair;
+}

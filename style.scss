@@ -1,0 +1,10 @@
+/**
+sass --watch style.scss:style.css
+/* */
+@import 'css/setup/variables.scss';
+@import 'css/setup/mixins.scss';
+@import 'css/setup/reusable_helpers.scss';
+@import 'css/base/fonts.scss';
+@import 'css/base/typography.scss';
+@import 'css/base/buttons.scss';
+@import 'css/base/sections.scss';

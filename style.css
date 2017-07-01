@@ -1,0 +1,40 @@
+/**
+sass --watch style.scss:style.css
+/* */
+/*8 Colours **/
+/** Fonts **/
+.text-center {
+  text-align: center; }
+
+@font-face {
+  font-family: 'Montserrat', sans-serif;
+  src: url("fonts/fontawesome-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url("fonts/fontawesome-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway', sans-serif;
+  src: url("fonts/fontawesome-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333333;
+  margin: 0;
+  background-color: #A2988A; }
+
+.draw-container {
+  width: 600px;
+  height: 600px;
+  background-color: #ffffff;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  cursor: crosshair; }
+
+/*# sourceMappingURL=style.css.map */
