@@ -1,96 +1,74 @@
-PaintFinger = function () {
+PaintFinger = function() {
 
     var canvas,
-        context,
-        clickX = new Array(),
-        clickY = new Array(),
-        drag = new Array(),
-        paint;
+        context;
 
-    init = function(){
-        this.canvas = document.getElementById("canvas");
-        _context = this.canvas.getContext("2d");
+    initialiseCanvas = function() {
 
-        bindEventListeners();
-    },
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
 
-    bindEventListeners =  function() {
-        mouseDown();
-        mouseOutOfArea();
-        mouseMove();
-    },
+            context.strokeStyle = "#E13EAB";
+            context.lineJoin = "round";
+            context.lineWidth = 2;
 
-    mouseDown = function() {
-        $("#canvas").mousedown(function (event) {
+            applyBindings();
 
-            console.log("mouse down");
+        },
 
-            var mouseX = event.pageX - this.offsetLeft;
-            var mouseY = event.pageY - this.offsetTop;
+        applyBindings = function() {
+        	mousemove();
+            mousedown();
+            mouseup();
+            mouseout();
+        },
 
-            paint = true;
+		mousedown = function() {
+        	$("#canvas").mousedown(function(event) {
+      			var position = getCursorPosition(event);
+                context.moveTo(position.posX, position.posY);
+                context.beginPath();
+            });
 
-            addClick(mouseX, mouseY, true);
-            redraw();
-        });
-    },
+        },
 
-    mouseMove = function() {
+        mousemove = function() {
+            $("#canvas").mousemove(function(event) {
+                drawStroke(event);
+            });
+        },
 
-        $("#canvas").mousemove(function (event) {
-            if(paint) {
-                addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
-                redraw();
-            }
-        });
-    };
+        drawStroke = function(event) {
 
-    addClick = function(x, y, dragging) {
+          var position = getCursorPosition(event);
 
-        console.log("add click");
-
-        clickX.push(x);
-        clickY.push(y);
-        drag.push(dragging);
-    },
-
-    mouseOutOfArea = function() {
-        $("#canvas").mouseleave(() => {
-            paint = false;
-        });
-
-        $("#canvas").mouseleave(() => {
-            paint = false;
-        });
-    },
-
-    redraw = function() {
-
-        console.log("redraw");
-
-        _context.clearRect(0, 0, _context.canvas.width, _context.canvas.height); // Clears the canvas
-
-        _context.strokeStyle = "#df4b26";
-        _context.lineJoin = "round";
-        _context.lineWidth = 1;
-
-        for (var i=0; i < clickX.length; i++) {
-            _context.beginPath();
-
-            if (drag[i] && i) {
-                _context.moveTo(clickX[i-1], clickY[i-1]);
-            } else {
-                _context.moveTo(clickX[i]-1, clickY[i]);
-            }
-
-            _context.lineTo(clickX[i], clickY[i]);
-            _context.closePath();
-            _context.stroke();
+          context.lineTo(position.posX, position.posY);
+          context.stroke();
         }
-    };
+
+        mouseup = function() {
+            $("#canvas").mousemove(function(event) {
+                context.closePath();
+            })
+        },
+
+        mouseout = function() {
+            $("#canvas").mousemove(function(event) {
+                context.closePath();
+            })
+        },
+
+        getCursorPosition = function(event) {
+            let canvasBounds = canvas.getBoundingClientRect();
+
+            return {
+                posX: event.clientX - canvasBounds.left,
+                posY: event.clientY - canvasBounds.top
+            };
+        }
 
     return {
-       init: init
-   };
+        initialiseCanvas: initialiseCanvas
+    };
 
- }();
+}();
