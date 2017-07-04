@@ -47,13 +47,13 @@ PaintFinger = function() {
         }
 
         mouseup = function() {
-            $("#canvas").mousemove(function(event) {
+            $("#canvas").mouseup(function(event) {
                 context.closePath();
             })
         },
 
         mouseout = function() {
-            $("#canvas").mousemove(function(event) {
+            $("#canvas").mouseout(function(event) {
                 context.closePath();
             })
         },
