@@ -33,11 +33,11 @@ PaintFinger = function() {
             setContext(context);
             setCanvas(canvas);
 
-            applyBindings();
+            applyBindings(context);
 
         },
 
-        applyBindings = function() {
+        applyBindings = function(context) {
             getCanvas().addEventListener('mousedown', mousedown, false);
             getCanvas().addEventListener('mousemove', mousemove, false);
             window.addEventListener('mouseup', mouseup, false);
