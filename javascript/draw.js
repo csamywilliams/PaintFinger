@@ -47,6 +47,7 @@ PaintFinger = function() {
         drawStroke = function(event) {
 
             var position = getCursorPosition(event);
+
             _context.strokeStyle = _colour;
 
             _context.lineTo(position.posX, position.posY);
