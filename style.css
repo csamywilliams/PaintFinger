@@ -28,12 +28,37 @@ body {
   background-color: #A2988A; }
 
 .draw-container {
-  width: 600px;
-  height: 600px;
-  background-color: #ffffff;
+  background-color: white;
   padding: 0;
   margin-right: auto;
   display: block;
   cursor: crosshair; }
+
+.colour-palette {
+  list-style-type: none; }
+  .colour-palette li {
+    display: inline-block;
+    width: 40px;
+    height: 40px; }
+  .colour-palette .swatch1 {
+    background-color: red; }
+  .colour-palette .swatch2 {
+    background-color: lime; }
+  .colour-palette .swatch3 {
+    background-color: blue; }
+  .colour-palette .swatch4 {
+    background-color: black; }
+  .colour-palette .swatch5 {
+    background-color: yellow; }
+  .colour-palette .swatch6 {
+    background-color: white; }
+  .colour-palette .swatch7 {
+    background-color: #ffa600; }
+  .colour-palette .swatch8 {
+    background-color: cyan; }
+  .colour-palette .swatch9 {
+    background-color: #ff00aa; }
+  .colour-palette .swatch10 {
+    background-color: #b02ed1; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,51 @@
+.colour-palette {
+
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+    }
+
+	.swatch1 {
+		background-color: $red;
+	}
+
+	.swatch2 {
+		background-color: $green;
+	}
+
+	.swatch3 {
+		background-color: $blue;
+	}
+
+	.swatch4 {
+		background-color: $black;
+	}
+
+	.swatch5 {
+		background-color: $yellow;
+	}
+
+	.swatch6 {
+		background-color: $white;
+	}
+
+	.swatch7 {
+		background-color: $orange;
+	}
+
+	.swatch8 {
+		background-color: $light-blue;
+	}
+
+	.swatch9 {
+		background-color: $pink;
+	}
+
+	.swatch10 {
+		background-color: $purple;
+	}
+
+}
