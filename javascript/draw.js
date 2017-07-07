@@ -4,49 +4,30 @@ PaintFinger = function() {
         _context,
         drag,
 
-        getContext = function() {
-            return this._context;
-        },
-
-        setContext = function(ctxt) {
-            this._context = ctxt;
-        },
-
-        getCanvas = function() {
-            return this._canvas;
-        },
-
-        setCanvas = function(canvas) {
-            this._canvas = canvas;
-        },
-
         initialiseCanvas = function() {
 
-            let canvas = document.getElementById("canvas");
+            _canvas = document.getElementById("canvas");
 
-            let context = canvas.getContext("2d");
+            _context = canvas.getContext("2d");
 
-            context.strokeStyle = "#E13EAB";
-            context.lineJoin = "round";
-            context.lineWidth = 2;
+            _context.strokeStyle = "#E13EAB";
+            _context.lineJoin = "round";
+            _context.lineWidth = 2;
 
-            setContext(context);
-            setCanvas(canvas);
-
-            applyBindings(context);
+            applyBindings();
 
         },
 
-        applyBindings = function(context) {
-            getCanvas().addEventListener('mousedown', mousedown, false);
-            getCanvas().addEventListener('mousemove', mousemove, false);
+        applyBindings = function() {
+            _canvas.addEventListener('mousedown', mousedown, false);
+            _canvas.addEventListener('mousemove', mousemove, false);
             window.addEventListener('mouseup', mouseup, false);
         },
 
 		mousedown = function(event) {
   			var position = getCursorPosition(event);
-            getContext().moveTo(position.posX, position.posY);
-            getContext().beginPath();
+            _context.moveTo(position.posX, position.posY);
+            _context.beginPath();
             drag = true;
         },
 
@@ -58,19 +39,19 @@ PaintFinger = function() {
 
         mouseup = function() {
             drag = false;
-            getContext().closePath();
+            _context.closePath();
         },
 
         drawStroke = function(event) {
 
             var position = getCursorPosition(event);
 
-            getContext().lineTo(position.posX, position.posY);
-            getContext().stroke();
+            _context.lineTo(position.posX, position.posY);
+            _context.stroke();
         },
 
         getCursorPosition = function(event) {
-            let canvasBounds = getCanvas().getBoundingClientRect();
+            let canvasBounds = _canvas.getBoundingClientRect();
 
             return {
                 posX: event.clientX - canvasBounds.left,
