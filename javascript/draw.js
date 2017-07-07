@@ -3,6 +3,7 @@ PaintFinger = function() {
     var _canvas,
         _context,
         drag,
+        _colour =  "hsla(0, 0%, 0%, 1)",
 
         initialiseCanvas = function() {
 
@@ -10,7 +11,6 @@ PaintFinger = function() {
 
             _context = canvas.getContext("2d");
 
-            _context.strokeStyle = "#E13EAB";
             _context.lineJoin = "round";
             _context.lineWidth = 2;
 
@@ -21,7 +21,9 @@ PaintFinger = function() {
         applyBindings = function() {
             _canvas.addEventListener('mousedown', mousedown, false);
             _canvas.addEventListener('mousemove', mousemove, false);
+            _canvas.addEventListener ("mouseout", mouseup, false);
             window.addEventListener('mouseup', mouseup, false);
+            paletteListener();
         },
 
 		mousedown = function(event) {
@@ -45,6 +47,7 @@ PaintFinger = function() {
         drawStroke = function(event) {
 
             var position = getCursorPosition(event);
+            _context.strokeStyle = _colour;
 
             _context.lineTo(position.posX, position.posY);
             _context.stroke();
@@ -57,7 +60,20 @@ PaintFinger = function() {
                 posX: event.clientX - canvasBounds.left,
                 posY: event.clientY - canvasBounds.top
             };
-        }
+        },
+
+        paletteListener = function() {
+
+            document.getElementById("colour-palette").addEventListener("click", function(e) {
+
+                _context.closePath();
+            	if(e.target && e.target.nodeName == "LI") {
+
+                    let colour = event.target.dataset.swatch;
+                    _colour = colour;
+            	}
+            });
+        };
 
     return {
         initialiseCanvas: initialiseCanvas
