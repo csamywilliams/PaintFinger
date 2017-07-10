@@ -2,22 +2,24 @@ Canvas = function() {
 
     var _context,
 
-        bindActions = function(context) {
+        bindActions = function() {
 
-            _context = context;
+            _context = PaintFinger.getContext();
 
-            clearCanvas();
+            onClickClearCanvas();
+        },
 
+        onClickClearCanvas = function() {
+            document.getElementById("clearCanvas").addEventListener("click", clearCanvas, true);
         },
 
         clearCanvas = function() {
             _context.clearRect(0, 0, canvas.width, canvas.height);
-
-            console.log(_context);
         };
 
     return {
-        bindActions : bindActions
+        bindActions : bindActions,
+        clearCanvas : clearCanvas
     };
 
 }();
