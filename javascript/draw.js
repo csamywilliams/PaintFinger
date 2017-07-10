@@ -2,7 +2,7 @@ PaintFinger = function() {
 
     var _canvas,
         _context,
-        drag,
+        _drag,
         _colour =  "hsla(0, 0%, 0%, 1)",
 
         initialiseCanvas = function() {
@@ -27,26 +27,32 @@ PaintFinger = function() {
         },
 
 		mousedown = function(event) {
-  			var position = getCursorPosition(event);
+
+  			let position = getCursorPosition(event);
+
             _context.moveTo(position.posX, position.posY);
             _context.beginPath();
-            drag = true;
+            _drag = true;
         },
 
         mousemove = function(event) {
-            if(drag) {
+
+            if(_drag) {
                 drawStroke(event);
             }
+
         },
 
         mouseup = function() {
-            drag = false;
+
+            _drag = false;
             _context.closePath();
+
         },
 
         drawStroke = function(event) {
 
-            var position = getCursorPosition(event);
+            let position = getCursorPosition(event);
 
             _context.strokeStyle = _colour;
 
@@ -55,6 +61,7 @@ PaintFinger = function() {
         },
 
         getCursorPosition = function(event) {
+
             let canvasBounds = _canvas.getBoundingClientRect();
 
             return {
@@ -68,6 +75,7 @@ PaintFinger = function() {
             document.getElementById("colour-palette").addEventListener("click", function(e) {
 
                 _context.closePath();
+
             	if(e.target && e.target.nodeName == "LI") {
 
                     let colour = event.target.dataset.swatch;
