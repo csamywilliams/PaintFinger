@@ -82,10 +82,15 @@ PaintFinger = function() {
                     _colour = colour;
             	}
             });
+        },
+
+        getContext = function() {
+            return _context;
         };
 
     return {
-        initialiseCanvas: initialiseCanvas
+        initialiseCanvas: initialiseCanvas,
+        getContext: getContext
     };
 
 }();
