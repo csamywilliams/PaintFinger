@@ -89,8 +89,8 @@ PaintFinger = function() {
         };
 
     return {
-        initialiseCanvas: initialiseCanvas,
-        getContext: getContext
+        initialiseCanvas,
+        getContext
     };
 
 }();

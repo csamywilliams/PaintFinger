@@ -18,8 +18,8 @@ Canvas = function() {
         };
 
     return {
-        bindActions : bindActions,
-        clearCanvas : clearCanvas
+        bindActions,
+        clearCanvas
     };
 
 }();
