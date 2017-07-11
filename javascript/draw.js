@@ -24,6 +24,7 @@ PaintFinger = function() {
             _canvas.addEventListener ("mouseout", mouseup, false);
             window.addEventListener('mouseup', mouseup, false);
             paletteListener();
+            onClickClearCanvas();
         },
 
 		mousedown = function(event) {
@@ -84,13 +85,16 @@ PaintFinger = function() {
             });
         },
 
-        getContext = function() {
-            return _context;
+        onClickClearCanvas = function() {
+            document.getElementById("clearCanvas").addEventListener("click", clearCanvas, true);
+        },
+
+        clearCanvas = function() {
+            _context.clearRect(0, 0, _canvas.width, _canvas.height);
         };
 
     return {
-        initialiseCanvas,
-        getContext
+        initialiseCanvas
     };
 
 }();
