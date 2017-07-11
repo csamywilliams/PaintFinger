@@ -4,6 +4,7 @@ PaintFinger = function() {
         _context,
         _drag,
         _colour =  "hsla(0, 0%, 0%, 1)",
+        _size = 1;
 
         initialiseCanvas = function() {
 
@@ -12,7 +13,7 @@ PaintFinger = function() {
             _context = canvas.getContext("2d");
 
             _context.lineJoin = "round";
-            _context.lineWidth = 2;
+            _context.lineWidth = _size;
 
             applyBindings();
 
@@ -23,6 +24,7 @@ PaintFinger = function() {
             _canvas.addEventListener('mousemove', mousemove, false);
             _canvas.addEventListener ("mouseout", mouseup, false);
             window.addEventListener('mouseup', mouseup, false);
+            document.getElementById("lineSize").addEventListener("change", setLineSize, false);
             paletteListener();
             onClickClearCanvas();
         },
@@ -56,6 +58,7 @@ PaintFinger = function() {
             let position = getCursorPosition(event);
 
             _context.strokeStyle = _colour;
+            _context.lineWidth = _size;
 
             _context.lineTo(position.posX, position.posY);
             _context.stroke();
@@ -83,6 +86,10 @@ PaintFinger = function() {
                     _colour = colour;
             	}
             });
+        },
+
+        setLineSize = function() {
+            _size = this.value;
         },
 
         onClickClearCanvas = function() {
