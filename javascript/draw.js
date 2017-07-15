@@ -4,6 +4,7 @@ PaintFinger = function() {
         _context,
         _drag,
         _colour =  "hsla(0, 0%, 0%, 1)",
+        _white = "hsla(115, 100%, 100%, 1)",
         _size = 1;
 
         initialiseCanvas = function() {
@@ -26,7 +27,7 @@ PaintFinger = function() {
             window.addEventListener('mouseup', mouseup, false);
             document.getElementById("lineSize").addEventListener("change", setLineSize, false);
             paletteListener();
-            onClickClearCanvas();
+            onClickListeners();
         },
 
 		mousedown = function(event) {
@@ -92,12 +93,17 @@ PaintFinger = function() {
             _size = this.value;
         },
 
-        onClickClearCanvas = function() {
+        onClickListeners = function() {
             document.getElementById("clearCanvas").addEventListener("click", clearCanvas, true);
+            document.getElementById("rubber").addEventListener("click", eraseOnCanvas, true);
         },
 
         clearCanvas = function() {
             _context.clearRect(0, 0, _canvas.width, _canvas.height);
+        },
+
+        eraseOnCanvas = () => {
+            _colour = _white;
         };
 
     return {
