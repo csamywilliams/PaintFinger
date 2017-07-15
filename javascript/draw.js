@@ -98,7 +98,7 @@ PaintFinger = function() {
             document.getElementById("rubber").addEventListener("click", eraseOnCanvas, true);
         },
 
-        clearCanvas = function() {
+        clearCanvas = () => {
             _context.clearRect(0, 0, _canvas.width, _canvas.height);
         },
 
