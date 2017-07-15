@@ -75,7 +75,7 @@ PaintFinger = function() {
             };
         },
 
-        paletteListener = function() {
+        paletteListener = () => {
 
             document.getElementById("colour-palette").addEventListener("click", function(e) {
 
@@ -93,7 +93,7 @@ PaintFinger = function() {
             _size = this.value;
         },
 
-        onClickListeners = function() {
+        onClickListeners = () => {
             document.getElementById("clearCanvas").addEventListener("click", clearCanvas, true);
             document.getElementById("rubber").addEventListener("click", eraseOnCanvas, true);
         },
